@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name w_connectors)(type Legacy)(uri "/home/ben/Documents/kicad libraries/lib_w_connectors/w_connectors.lib")(options "")(descr ""))
+)
