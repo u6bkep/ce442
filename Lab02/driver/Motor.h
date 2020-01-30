@@ -5,18 +5,18 @@
 
 
 
-class motor
+class Motor
 {
   public:
-    motor(int pin, int pin2, int spd_pin);
+    Motor(int pin, int pin2, int spd_pin);
     void forward (int speed);
     void backward(int speed);
     void stop();
 
   private:
-    int_pin;
-    int_pin2;
-    int_spd_pin;
+    int _pin;
+    int _pin2;
+    int _spd_pin;
     
 };
 
