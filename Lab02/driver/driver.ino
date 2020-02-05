@@ -26,20 +26,59 @@
 Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpin1, frontRightdirpin2, frontRightspdpin,
             rearLeftdirpin1, rearLeftdirpin2, rearLeftspdpin, rearRightdirpin1, rearRightdirpin2, rearRightspdpin);
 
-void setup() {
-  // put your setup code here, to run once:
-  
-  
 
+void square()
+{
+  robot.forward(80);
+  delay(2500);
+  
+  robot.stop();
+  delay(1000);
+
+  robot.right_turn(70);
+  delay(1000);
+
+  robot.stop();
+  delay(1000);
+
+  robot.forward(80);
+  delay(2500);
+
+  robot.right_turn(80);
+  delay(1000);
+  
+  robot.stop();
+  delay(1000);
+  
+  robot.forward(80);
+  delay(2500);
+  
+  robot.stop();
+  delay(1000);
+
+  robot.right_turn(70);
+  delay(1000);
+  
+  robot.stop();
+  delay(1000);
+  
+  robot.forward(80);
+  delay(2500);
+
+  robot.right_turn(80);
+  delay(1000);
+
+  robot.stop();
+  delay(1000);
+}
+
+void setup() {
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  delay(2000);
-  robot.forward(SPEED*.50);
-  delay(2000);
-  robot.stop();
-  delay(1000);
-  robot.backward(SPEED*.50);
+    
+  square();
+  
   
 }

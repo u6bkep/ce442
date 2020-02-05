@@ -15,8 +15,8 @@ Robot::Robot(int dirFL1pin, int dirFL2pin, int spdFLpin, int dirFR1pin, int dirF
 void Robot::forward(int speed)
 {
   motor_FL.forward(speed);
-  motor_FR.forward(speed);
-  motor_RR.forward(speed);
+  motor_FR.forward(speed*0.8);
+  motor_RR.forward(speed*0.8);
   motor_RL.forward(speed);
 }
 
@@ -26,6 +26,19 @@ void Robot::backward(int speed)
   motor_FR.backward(speed);
   motor_RR.backward(speed);
   motor_RL.backward(speed);
+}
+
+void Robot::left_turn(int speed){
+  motor_FL.backward(0);
+  motor_FR.forward(speed);
+  motor_RR.forward(speed);
+  motor_RL.backward(0); 
+}
+void Robot::right_turn(int speed){
+  motor_FL.forward(speed);
+  motor_FR.forward(0);
+  motor_RR.forward(0);
+  motor_RL.forward(speed); 
 }
 
 void Robot::slideRight(int speed)
@@ -38,8 +51,8 @@ void Robot::slideLeft(int speed)
 
 }
 
-/*
-void rotateCCW(int speed)
+
+void Robot::rotateCCW(int speed)
 {
   motor_FL.backward(speed);
   motor_FR.forward(speed);
@@ -47,14 +60,14 @@ void rotateCCW(int speed)
   motor_RL.backward(speed);
 }
 
-void rotateCW(int speed)
+void Robot::rotateCW(int speed)
 {
   motor_FL.forward(speed);
   motor_FR.backward(speed);
   motor_RR.backward(speed);
   motor_RL.forward(speed);
 }
-*/
+
 void Robot::stop()
 {
   motor_FL.stop();

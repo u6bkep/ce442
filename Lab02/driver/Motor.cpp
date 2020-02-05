@@ -13,16 +13,16 @@ Motor::Motor(int dir1pin, int dir2pin, int spd_pin)
 }
 void Motor::forward(int speed)
 {
-  digitalWrite(_pin,LOW);
-  digitalWrite(_pin2,HIGH);
-  digitalWrite(_spd_pin,speed);
+  digitalWrite(_pin,HIGH);
+  digitalWrite(_pin2,LOW);
+  analogWrite(_spd_pin,(255.0*(speed/100.0)));
 }
 
 void Motor::backward(int speed)
 {
-  digitalWrite(_pin,HIGH);
-  digitalWrite(_pin2,LOW);
-  digitalWrite(_spd_pin,speed);
+  digitalWrite(_pin,LOW);
+  digitalWrite(_pin2,HIGH);
+  analogWrite(_spd_pin,(255.0*(speed/100.0)));
 }
 
 void Motor::stop()

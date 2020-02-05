@@ -15,6 +15,8 @@ class Robot {
     void slideLeft(int speed);
     void rotateCCW(int speed);
     void rotateCW(int speed);
+    void left_turn(int speed);
+    void right_turn(int speed);
     
     void stop();
 
