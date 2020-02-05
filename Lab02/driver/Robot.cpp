@@ -54,8 +54,8 @@ void Robot::slideLeft(int speed)
 
 void Robot::rotateCCW(int speed)
 {
-  motor_FL.backward(speed);
-  motor_FR.forward(speed);
+  motor_FL.backward(speed*.6);
+  motor_FR.forward(speed*.6);
   motor_RR.forward(speed);
   motor_RL.backward(speed);
 }
@@ -64,8 +64,8 @@ void Robot::rotateCW(int speed)
 {
   motor_FL.forward(speed);
   motor_FR.backward(speed);
-  motor_RR.backward(speed);
-  motor_RL.forward(speed);
+  motor_RR.backward(speed*.6);
+  motor_RL.forward(speed*.6);
 }
 
 void Robot::stop()

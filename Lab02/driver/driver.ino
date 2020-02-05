@@ -4,7 +4,7 @@
 
 
 
-#define SPEED 140
+#define SPEED 50
 #define TURN_SPEED 160
 
 #define frontRightdirpin1  22
@@ -26,48 +26,63 @@
 Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpin1, frontRightdirpin2, frontRightspdpin,
             rearLeftdirpin1, rearLeftdirpin2, rearLeftspdpin, rearRightdirpin1, rearRightdirpin2, rearRightspdpin);
 
+//2500 for 80
+//1200 for 80
+
+//3000 for 50
+//1400 for 50
 
 void square()
 {
-  robot.forward(80);
-  delay(2500);
-  
+  //FIRST SIDE
+  robot.forward(SPEED);
+  delay(3000);
   robot.stop();
   delay(1000);
 
-  robot.right_turn(70);
-  delay(1000);
-
+  robot.right_turn(SPEED);
+  delay(1400);
   robot.stop();
   delay(1000);
 
-  robot.forward(80);
-  delay(2500);
-
-  robot.right_turn(80);
-  delay(1000);
-  
-  robot.stop();
-  delay(1000);
-  
-  robot.forward(80);
-  delay(2500);
-  
+//SECOND SIDE
+  robot.forward(SPEED);
+  delay(3000);
   robot.stop();
   delay(1000);
 
-  robot.right_turn(70);
+  robot.right_turn(SPEED);
+  delay(1400);
+  robot.stop();
   delay(1000);
-  
+
+//THIRD SIDE
+  robot.forward(SPEED);
+  delay(3000);
+  robot.stop();
+  delay(1000);
+
+  robot.right_turn(SPEED);
+  delay(1400);
+  robot.stop();
+  delay(1000);
+
+//FOURTH SIDE
+  robot.forward(SPEED);
+  delay(3000);
   robot.stop();
   delay(1000);
   
-  robot.forward(80);
-  delay(2500);
-
-  robot.right_turn(80);
+  robot.right_turn(SPEED);
+  delay(1400);
+  robot.stop();
   delay(1000);
+}
 
+void figure8()
+{
+  robot.rotateCW(SPEED);
+  delay(3000);
   robot.stop();
   delay(1000);
 }
