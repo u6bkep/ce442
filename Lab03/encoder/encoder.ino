@@ -39,7 +39,8 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
  void EncoderRightISR()
  {
-    if(digitalRead(rightB))
+  
+    if(digitalRead(rightB) == digitalRead(rightA))
     {
       encoderRightCounter --;
     }
@@ -52,7 +53,7 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
  void EncoderLeftISR()
  {
-   if(digitalRead(leftB))
+   if(digitalRead(leftB) == digitalRead(leftA))
     {
       encoderLeftCounter ++;
     }
@@ -69,11 +70,11 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
    pinMode (leftA,INPUT);
    pinMode (leftB,INPUT);
 
-   attachInterrupt(digitalPinToInterrupt(rightA), EncoderRightISR, RISING);
-   attachInterrupt(digitalPinToInterrupt(leftA), EncoderLeftISR, RISING);
+   attachInterrupt(digitalPinToInterrupt(rightA), EncoderRightISR, CHANGE);
+   attachInterrupt(digitalPinToInterrupt(leftA), EncoderLeftISR, CHANGE);
  
    Serial.begin(9600);
-
+/*
    //FIRST SIDE
   robot.forward(SPEED);
   delay(3000);
@@ -84,13 +85,14 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
   delay(1400);
   robot.stop();
   delay(1000); 
+  */
  } 
  void loop() { 
    
     Serial.print("Position left: ");
-     Serial.print(encoderLeftCounter, HEX);
+     Serial.print(encoderLeftCounter);
      Serial.print(",  Position right: ");
-     Serial.println(encoderRightCounter, HEX);
+     Serial.println(encoderRightCounter);
 
      
      delay(1000);
