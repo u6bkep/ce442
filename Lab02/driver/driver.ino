@@ -81,10 +81,31 @@ void square()
 
 void figure8()
 {
-  robot.rotateCW(SPEED);
-  delay(3000);
-  robot.stop();
-  delay(1000);
+  Motor FL(26,28,10);
+  Motor FR(22,24,9);
+  Motor RL(7,8,12);
+  Motor RR(5,6,11);
+
+  FL.forward(80);
+  RL.forward(80);
+  FR.forward(30);
+  RR.forward(30);
+  delay(14500);
+  FL.stop();
+  RL.stop();
+  FR.stop();
+  RR.stop();
+  delay(2000);
+  FL.forward(30);
+  RL.forward(30);
+  FR.forward(80);
+  RR.forward(80);
+  delay(14500);
+  FL.stop();
+  RL.stop();
+  FR.stop();
+  RR.stop();
+  delay(5000);
 }
 
 void setup() {
@@ -93,7 +114,9 @@ void setup() {
 
 void loop() {
     
-  square();
+ // square();
+  //delay(5000);
+  figure8();
   
   
 }
