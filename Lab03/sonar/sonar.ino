@@ -19,8 +19,8 @@
  #define Echo_PIN    31 // Ultrasonic Echo pin connect to A5
  #define Trig_PIN    30  // Ultrasonic Trig pin connect to A4
 
- #define SPEED 80
-#define TURN_SPEED 0x100
+ #define SPEED 100
+#define TURN_SPEED 90
 
 #define frontRightdirpin1  22
 #define frontRightdirpin2  24
@@ -43,7 +43,8 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
  void EncoderRightISR()
  {
-    if(digitalRead(rightB))
+  
+    if(digitalRead(rightB) == digitalRead(rightA))
     {
       encoderRightCounter --;
     }
@@ -56,7 +57,7 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
  void EncoderLeftISR()
  {
-   if(digitalRead(leftB))
+   if(digitalRead(leftB) == digitalRead(leftA))
     {
       encoderLeftCounter ++;
     }
@@ -91,8 +92,8 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
   pinMode (Echo_PIN,INPUT);
    
    Serial.begin(9600);
-   attachInterrupt(digitalPinToInterrupt(rightA), EncoderRightISR, RISING);
-   attachInterrupt(digitalPinToInterrupt(leftA), EncoderLeftISR, RISING);
+   attachInterrupt(digitalPinToInterrupt(rightA), EncoderRightISR, CHANGE);
+   attachInterrupt(digitalPinToInterrupt(leftA), EncoderLeftISR, CHANGE);
 
  } 
  void loop() { 
@@ -109,16 +110,18 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
   if(sonarDistance() < 24)
   {
-    flag = random(0,1);
-    if(flag == 0)
+    flag = random(0,2);
+    if(flag)
     {
       //turn right
-      robot.right_turn(TURN_SPEED);
+      robot.rotateCCW(TURN_SPEED);
+      delay(1000);
     }
     else
     {
       //turn left
-      robot.left_turn(TURN_SPEED);
+      robot.rotateCW(TURN_SPEED);
+      delay(1000);
     }
   }
   else
