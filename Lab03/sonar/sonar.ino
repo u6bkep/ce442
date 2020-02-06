@@ -14,12 +14,13 @@
  int aLastState;  
  volatile int encoderRightCounter = 0;
  volatile int encoderLeftCounter = 0;
+ int flag = 0;
 
  #define Echo_PIN    31 // Ultrasonic Echo pin connect to A5
  #define Trig_PIN    30  // Ultrasonic Trig pin connect to A4
 
- #define SPEED 50
-#define TURN_SPEED 160
+ #define SPEED 80
+#define TURN_SPEED 0x100
 
 #define frontRightdirpin1  22
 #define frontRightdirpin2  24
@@ -101,8 +102,27 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
   Serial.print(",  Position right: ");
   Serial.println(encoderRightCounter);
   */
-  Serial.print("distance: ");
-  Serial.print(sonarDistance());
-  Serial.println("cm");
-  delay(1000);
+  //Serial.print("distance: ");
+  //Serial.print(sonarDistance());
+  //Serial.println("cm");
+  //delay(1000);
+
+  if(sonarDistance() < 24)
+  {
+    flag = random(0,1);
+    if(flag == 0)
+    {
+      //turn right
+      robot.right_turn(TURN_SPEED);
+    }
+    else
+    {
+      //turn left
+      robot.left_turn(TURN_SPEED);
+    }
+  }
+  else
+  {
+    robot.forward(SPEED);
+  }
  }
