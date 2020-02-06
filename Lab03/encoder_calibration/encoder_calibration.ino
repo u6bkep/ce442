@@ -68,21 +68,32 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
    pinMode (rightB,INPUT);
    pinMode (leftA,INPUT);
    pinMode (leftB,INPUT);
-
+   Serial.begin(9600);
    attachInterrupt(digitalPinToInterrupt(rightA), EncoderRightISR, RISING);
    attachInterrupt(digitalPinToInterrupt(leftA), EncoderLeftISR, RISING);
 
 
   robot.forward(50);
-  while(encoderLeftCounter < 150)
+  while(encoderLeftCounter < 150);
+  robot.backward(80);
+  delay(10);
   robot.stop();
-  delay(10000); 
+  delay(3000); 
+
+encoderLeftCounter =0;
 
 robot.forward(80);
-  while(encoderLeftCounter < 150)
+  while(encoderLeftCounter < 150);
+  robot.backward(80);
+  delay(10);
   robot.stop();
 
  } 
  void loop() { 
+
+  Serial.print("Position left: ");
+     Serial.print(encoderLeftCounter);
+     Serial.print(",  Position right: ");
+     Serial.println(encoderRightCounter);
     delay(5000);
  }
