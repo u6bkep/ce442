@@ -16,7 +16,7 @@
  volatile int encoderLeftCounter = 0;
 
  #define SPEED 50
-#define TURN_SPEED 160
+#define TURN_DISTANCE 0x80
 
 #define frontRightdirpin1  22
 #define frontRightdirpin2  24
@@ -74,11 +74,60 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
 
   robot.forward(50);
-  while(encoderLeftCounter < 80);
+  while(encoderLeftCounter < 360);
   robot.backward(80);
   delay(50);
   robot.stop();
-  delay(3000); 
+  encoderLeftCounter = 0;
+  
+  robot.right_turn(50);
+  while(encoderLeftCounter < TURN_DISTANCE);
+  robot.backward(80);
+  delay(50);
+  robot.stop();
+  encoderLeftCounter = 0;
+
+    robot.forward(50);
+  while(encoderLeftCounter < 360);
+  robot.backward(80);
+  delay(50);
+  robot.stop();
+  encoderLeftCounter = 0;
+
+  robot.right_turn(50);
+  while(encoderLeftCounter < TURN_DISTANCE);
+  robot.backward(80);
+  delay(50);
+  robot.stop();
+  encoderLeftCounter = 0;
+
+    robot.forward(50);
+  while(encoderLeftCounter < 360);
+  robot.backward(80);
+  delay(50);
+  robot.stop();
+  encoderLeftCounter = 0;
+
+  robot.right_turn(50);
+  while(encoderLeftCounter < TURN_DISTANCE);
+  robot.backward(80);
+  delay(50);
+  robot.stop();
+  encoderLeftCounter = 0;
+
+    robot.forward(50);
+  while(encoderLeftCounter < 360);
+  robot.backward(80);
+  delay(50);
+  robot.stop();
+  encoderLeftCounter = 0;
+
+  robot.right_turn(50);
+  while(encoderLeftCounter < TURN_DISTANCE);
+  robot.backward(80);
+  delay(50);
+  robot.stop();
+  encoderLeftCounter = 0;
 /*
 encoderLeftCounter =0;
 
