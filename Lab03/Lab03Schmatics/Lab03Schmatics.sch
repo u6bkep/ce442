@@ -1,0 +1,291 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L w_connectors:Arduino_Mega_Header J1
+U 1 1 5E333365
+P 4200 4100
+F 0 "J1" H 4200 5487 60  0000 C CNN
+F 1 "Arduino_Mega_Header" H 4200 5381 60  0000 C CNN
+F 2 "" H 4200 4100 60  0000 C CNN
+F 3 "" H 4200 4100 60  0000 C CNN
+	1    4200 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L custom:osoyoo_voltage_display U2
+U 1 1 5E33AA09
+P 7450 2250
+F 0 "U2" H 7222 2051 50  0000 R CNN
+F 1 "osoyoo_voltage_display" H 7222 1960 50  0000 R CNN
+F 2 "" H 7450 2250 50  0001 C CNN
+F 3 "" H 7450 2250 50  0001 C CNN
+	1    7450 2250
+	-1   0    0    -1  
+$EndComp
+$Comp
+L custom:osoyoo_modelX left
+U 1 1 5E3363A3
+P 6250 5750
+F 0 "left" H 6275 4235 50  0000 C CNN
+F 1 "osoyoo_modelX" H 6275 4326 50  0000 C CNN
+F 2 "" H 6250 5750 50  0001 C CNN
+F 3 "" H 6250 5750 50  0001 C CNN
+	1    6250 5750
+	-1   0    0    1   
+$EndComp
+$Comp
+L custom:osoyoo_modelX right
+U 1 1 5E3359F8
+P 6300 3700
+F 0 "right" H 6325 2185 50  0000 C CNN
+F 1 "osoyoo_modelX" H 6325 2276 50  0000 C CNN
+F 2 "" H 6300 3700 50  0001 C CNN
+F 3 "" H 6300 3700 50  0001 C CNN
+	1    6300 3700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6700 2400 7300 2400
+Wire Wire Line
+	7300 2500 6700 2500
+Wire Wire Line
+	6700 2600 7300 2600
+Wire Wire Line
+	5850 3500 5650 3500
+Wire Wire Line
+	4750 3600 5650 3600
+Wire Wire Line
+	5850 3600 5750 3600
+Wire Wire Line
+	4750 3250 5750 3250
+Wire Wire Line
+	5850 3400 5550 3400
+Wire Wire Line
+	5550 3400 5550 3550
+Wire Wire Line
+	4700 3550 5550 3550
+Wire Wire Line
+	5850 3300 5500 3300
+Wire Wire Line
+	5500 3300 5500 3500
+Wire Wire Line
+	4750 3500 5500 3500
+Wire Wire Line
+	5850 3200 5450 3200
+Wire Wire Line
+	5450 3200 5450 3400
+Wire Wire Line
+	5450 3400 4700 3400
+Wire Wire Line
+	5850 3100 5400 3100
+Wire Wire Line
+	5400 3100 5400 3200
+Wire Wire Line
+	5400 3200 4700 3200
+Wire Wire Line
+	5800 5650 5400 5650
+Wire Wire Line
+	5400 5650 5400 3350
+Wire Wire Line
+	5400 3350 4750 3350
+Wire Wire Line
+	5800 5150 5350 5150
+Wire Wire Line
+	5350 5150 5350 3300
+Wire Wire Line
+	5350 3300 4700 3300
+Wire Wire Line
+	5850 2750 5700 2750
+Wire Wire Line
+	5700 2750 5700 4550
+Wire Wire Line
+	5700 4550 5800 4550
+Wire Wire Line
+	5750 3600 5750 3250
+Wire Wire Line
+	5650 3500 5650 3600
+Wire Wire Line
+	5800 4650 5600 4650
+Wire Wire Line
+	5600 4650 5600 2850
+Wire Wire Line
+	5600 2850 5850 2850
+$Comp
+L Device:Battery BT?
+U 1 1 5E38AC36
+P 5300 2150
+F 0 "BT?" H 5408 2196 50  0000 L CNN
+F 1 "Battery" H 5408 2105 50  0000 L CNN
+F 2 "" V 5300 2210 50  0001 C CNN
+F 3 "~" V 5300 2210 50  0001 C CNN
+	1    5300 2150
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5300 2350 5300 2600
+Wire Wire Line
+	5300 2600 5850 2600
+Wire Wire Line
+	5850 2500 5850 1950
+Wire Wire Line
+	5850 1950 5300 1950
+Wire Wire Line
+	3700 4550 3250 4550
+Wire Wire Line
+	3250 4550 3250 5350
+Wire Wire Line
+	3250 5350 4900 5350
+Wire Wire Line
+	4900 5350 4900 5250
+Wire Wire Line
+	4900 5250 5800 5250
+Wire Wire Line
+	5800 5350 4950 5350
+Wire Wire Line
+	4950 5350 4950 5400
+Wire Wire Line
+	4950 5400 3200 5400
+Wire Wire Line
+	3200 5400 3200 4500
+Wire Wire Line
+	3200 4500 3650 4500
+Wire Wire Line
+	3700 4450 3150 4450
+Wire Wire Line
+	3150 4450 3150 5450
+Wire Wire Line
+	3150 5450 5800 5450
+Wire Wire Line
+	5800 5550 3100 5550
+Wire Wire Line
+	3100 5550 3100 4400
+Wire Wire Line
+	3100 4400 3650 4400
+$Comp
+L custom:osoyoo_encoder U?
+U 1 1 5E3D2752
+P 2050 4050
+F 0 "U?" H 2228 3851 50  0000 L CNN
+F 1 "osoyoo_encoder" H 2228 3760 50  0000 L CNN
+F 2 "" H 2050 4050 50  0001 C CNN
+F 3 "" H 2050 4050 50  0001 C CNN
+	1    2050 4050
+	-1   0    0    1   
+$EndComp
+$Comp
+L custom:osoyoo_encoder U?
+U 1 1 5E3E40E7
+P 2050 3450
+F 0 "U?" H 2228 3251 50  0000 L CNN
+F 1 "osoyoo_encoder" H 2228 3160 50  0000 L CNN
+F 2 "" H 2050 3450 50  0001 C CNN
+F 3 "" H 2050 3450 50  0001 C CNN
+	1    2050 3450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4750 4250 5250 4250
+Wire Wire Line
+	5250 4250 5250 5600
+Wire Wire Line
+	5250 5600 3050 5600
+Wire Wire Line
+	3050 5600 3050 3750
+Wire Wire Line
+	3050 3750 2200 3750
+Wire Wire Line
+	4700 4300 5200 4300
+Wire Wire Line
+	5200 4300 5200 5650
+Wire Wire Line
+	5200 5650 3000 5650
+Wire Wire Line
+	3000 3150 2200 3150
+Wire Wire Line
+	3000 3150 3000 5650
+Wire Wire Line
+	3650 4700 3300 4700
+Wire Wire Line
+	3300 4700 3300 3050
+Wire Wire Line
+	3300 3050 2200 3050
+Wire Wire Line
+	2200 3650 3350 3650
+Wire Wire Line
+	3350 3650 3350 4650
+Wire Wire Line
+	3350 4650 3700 4650
+Wire Wire Line
+	2200 3350 2250 3350
+Wire Wire Line
+	2250 3350 2250 3950
+Wire Wire Line
+	2250 3950 2200 3950
+Wire Wire Line
+	2200 3250 2300 3250
+Wire Wire Line
+	2300 3250 2300 3850
+Wire Wire Line
+	2300 3850 2200 3850
+$Comp
+L custom:osoyoo_sonar U?
+U 1 1 5E3FD23C
+P 2250 5000
+F 0 "U?" H 2467 4385 50  0000 C CNN
+F 1 "osoyoo_sonar" H 2467 4476 50  0000 C CNN
+F 2 "" H 2250 5000 50  0001 C CNN
+F 3 "" H 2250 5000 50  0001 C CNN
+	1    2250 5000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4700 4650 5150 4650
+Wire Wire Line
+	5150 4650 5150 5700
+Wire Wire Line
+	5150 5700 2950 5700
+Wire Wire Line
+	2950 5700 2950 4600
+Wire Wire Line
+	2200 4600 2950 4600
+Wire Wire Line
+	3650 4600 3400 4600
+Wire Wire Line
+	3400 4600 3400 4750
+Wire Wire Line
+	3400 4750 2900 4750
+Wire Wire Line
+	2900 4750 2900 4700
+Wire Wire Line
+	2900 4700 2200 4700
+$Comp
+L custom:servo U?
+U 1 1 5E40E9A2
+P 4700 2500
+F 0 "U?" H 4867 1985 50  0000 C CNN
+F 1 "servo" H 4867 2076 50  0000 C CNN
+F 2 "" H 4700 2500 50  0001 C CNN
+F 3 "" H 4700 2500 50  0001 C CNN
+	1    4700 2500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4750 3150 4800 3150
+Wire Wire Line
+	4800 3150 4800 2200
+Wire Wire Line
+	4800 2200 4700 2200
+$EndSCHEMATC

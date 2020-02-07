@@ -9,7 +9,7 @@
  #define rightB 34
  #define leftA 21
  #define leftB 32
- int counter = 0; 
+ int counter = 0;  
  int aState;
  int aLastState;  
  volatile int encoderRightCounter = 0;
