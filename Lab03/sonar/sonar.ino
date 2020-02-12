@@ -4,6 +4,8 @@
  */
 
 #include "Robot.h"
+#include <Servo.h>
+Servo servo;
  
  #define rightA 20
  #define rightB 34
@@ -15,6 +17,8 @@
  volatile int encoderRightCounter = 0;
  volatile int encoderLeftCounter = 0;
  int flag = 0;
+ int dir;
+ int firstTime = 1;
 
  #define Echo_PIN    31 // Ultrasonic Echo pin connect to A5
  #define Trig_PIN    30  // Ultrasonic Trig pin connect to A4
@@ -88,44 +92,120 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
    pinMode (leftA,INPUT);
    pinMode (leftB,INPUT);
 
-  pinMode (Trig_PIN,OUTPUT);
-  pinMode (Echo_PIN,INPUT);
+    pinMode (Trig_PIN,OUTPUT);
+   pinMode (Echo_PIN,INPUT);
    
-   Serial.begin(9600);
+  // Serial.begin(9600);
    attachInterrupt(digitalPinToInterrupt(rightA), EncoderRightISR, CHANGE);
    attachInterrupt(digitalPinToInterrupt(leftA), EncoderLeftISR, CHANGE);
+   servo.attach(13);
+   servo.write(0);
+   delay(1000);
+   servo.write(180);
+   delay(1000);
+   servo.write(90);
+   delay(3000);
 
  } 
- void loop() { 
-  /*
-  Serial.print("Position left: ");
-  Serial.print(encoderLeftCounter);
-  Serial.print(",  Position right: ");
-  Serial.println(encoderRightCounter);
-  */
-  //Serial.print("distance: ");
-  //Serial.print(sonarDistance());
-  //Serial.println("cm");
-  //delay(1000);
 
-  if(sonarDistance() < 24)
+ int findDirection(){
+  flag = random(0,2);
+
+  if(flag == 1)
   {
-    flag = random(0,2);
-    if(flag)
+    servo.write(90+45);//Left
+    delay(1000);
+    if(sonarDistance() < 24)
     {
-      //turn right
-      robot.rotateCCW(TURN_SPEED);
+      servo.write(90-45);//Right
       delay(1000);
+      if(sonarDistance() < 24)
+      {
+        servo.write(90);
+        delay(1000);
+        return 2;
+      }
     }
     else
     {
-      //turn left
-      robot.rotateCW(TURN_SPEED);
+      servo.write(90);
       delay(1000);
+      return 0;//Left
     }
   }
   else
   {
+    servo.write(90-45);//Right
+    delay(1000);
+    if(sonarDistance() < 24)
+    {
+      servo.write(90+45);//Left
+      delay(1000);
+      if(sonarDistance() < 24)
+      {
+        servo.write(90);
+        delay(1000);
+        return 2;
+      }
+    }
+    else
+    {
+      servo.write(90);
+      delay(1000);
+      return 1;//Right
+    }
+  }
+  
+ }//End of find direction
+
+
+ 
+ void loop() { 
+  if(firstTime == 1)
+  {
+    servo.write(90);
+    delay(1000);
+    firstTime = 0;
+  }
+  while(sonarDistance() > 24)
+  {
     robot.forward(SPEED);
+  }
+  robot.stop();
+  dir = findDirection();
+  if(dir == 2)
+  {
+    servo.write(90);
+    delay(1000);
+    while(sonarDistance() < 24)
+    {
+      robot.backward(SPEED);
+    }
+    robot.stop();
+    delay(1000);
+    findDirection();
+  }
+  if(dir == 1)
+  {
+    servo.write(90);
+    delay(1000);
+    while(sonarDistance() < 24)
+    {
+      robot.rotateCW(TURN_SPEED);
+    }
+    robot.stop();
+    delay(1000);
+  }
+  else if(dir == 0)
+  {
+    servo.write(90);
+    delay(1000);
+    while(sonarDistance() < 24)
+    {
+      robot.rotateCCW(TURN_SPEED);
+    }
+    robot.stop();
+    servo.write(90);
+    delay(1000);
   }
  }
