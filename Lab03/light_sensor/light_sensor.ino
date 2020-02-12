@@ -113,10 +113,6 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
    attachInterrupt(digitalPinToInterrupt(leftA), EncoderLeftISR, CHANGE);
 
  } 
-
-#define THRESHOLD_LEFT 850
-#define THRESHOLD_CENTER 900
-#define THRESHOLD_RIGHT 900
  
  void loop() 
  { 
