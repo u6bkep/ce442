@@ -23,8 +23,8 @@ Servo servo;
  #define Echo_PIN    31 // Ultrasonic Echo pin connect to A5
  #define Trig_PIN    30  // Ultrasonic Trig pin connect to A4
 
- #define SPEED 100
-#define TURN_SPEED 90
+ #define SPEED 80
+#define TURN_SPEED 60
 
 #define frontRightdirpin1  22
 #define frontRightdirpin2  24
@@ -173,26 +173,24 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
   }
   robot.stop();
   dir = findDirection();
+  servo.write(90);
   if(dir == 2)
   {
     servo.write(90);
     delay(1000);
-    while(sonarDistance() < 24)
-    {
-      robot.backward(SPEED);
-    }
+    robot.backward(SPEED);
+    delay(1500);
     robot.stop();
     delay(1000);
     findDirection();
+    servo.write(90);
   }
   if(dir == 1)
   {
     servo.write(90);
     delay(1000);
-    while(sonarDistance() < 24)
-    {
-      robot.rotateCW(TURN_SPEED);
-    }
+    robot.rotateCW(TURN_SPEED);
+    delay(1500);
     robot.stop();
     delay(1000);
   }
@@ -200,10 +198,8 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
   {
     servo.write(90);
     delay(1000);
-    while(sonarDistance() < 24)
-    {
-      robot.rotateCCW(TURN_SPEED);
-    }
+    robot.rotateCCW(TURN_SPEED);
+    delay(1500);
     robot.stop();
     servo.write(90);
     delay(1000);

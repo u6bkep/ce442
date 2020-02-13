@@ -26,7 +26,7 @@ Servo servo;
  #define Trig_PIN    30  // Ultrasonic Trig pin connect to A4
 
 //robot driving parameters
-#define SPEED 40
+#define SPEED 30
 #define TURN_SPEED 30
 
 //robot control pin config
@@ -277,129 +277,43 @@ void threeBlack()
     left = analogRead(LIGHT_SENSOR_LEFT);
     center = analogRead(LIGHT_SENSOR_CENTER);
     right = analogRead(LIGHT_SENSOR_RIGHT);
- // Serial.print("Left: ");
- // Serial.print(left);
-
-  /*while(sonarDistance < 20)
-  {
-    robot.stop();
-  }
-  */
-  
-  
-    while(left > THRESHOLD_LEFT) //Black Detected
-    {
-      robot.rotateCCW(TURN_SPEED);
-      left = analogRead(LIGHT_SENSOR_LEFT);
-      center = analogRead(LIGHT_SENSOR_CENTER);
-      right = analogRead(LIGHT_SENSOR_RIGHT);
-      //robot.forward(SPEED);
-      //delay(10);
-    }//End of Black left
-    if(left < THRESHOLD_LEFT)
-    {
-      Serial.print(", WHITE DETECTED ON LEFT");
-    }
-
-/*
-    Center sensor reading and drive
-*/
-
-    left = analogRead(LIGHT_SENSOR_LEFT);
-    center = analogRead(LIGHT_SENSOR_CENTER);
-    right = analogRead(LIGHT_SENSOR_RIGHT);
-
-  
-  //Serial.print(center);
-  //Serial.print(" Center: ");
-  while(center > THRESHOLD_CENTER)//Black
-  {
-    /*
-    distance = sonarDistance();
-    while(distance < 20);
-    {
-      robot.stop();
-      delay(1000);
-      distance = sonarDistance();
-    }
-    */
-    Serial.print(", BLACK DETECTED");
-    robot.forward(SPEED);
-    left = analogRead(LIGHT_SENSOR_LEFT);
-    center = analogRead(LIGHT_SENSOR_CENTER);
-    right = analogRead(LIGHT_SENSOR_RIGHT);
-    while((center > THRESHOLD_CENTER) && (right > THRESHOLD_RIGHT) && (left > THRESHOLD_LEFT))
-    {
-      robot.stop();
-      delay(50);
-      robot.backward(SPEED);
-      delay(50);
-      
-      threeBlack();
-      
-      robot.backward(SPEED);
-      delay(50);
-      
-    }
-    if((center > THRESHOLD_CENTER) && (left > THRESHOLD_LEFT) && (right > THRESHOLD_RIGHT))
-    {
-      robot.stop();
-      delay(50);
-      robot.backward(SPEED);
-      delay(50);
-      
-      threeBlack();
-
-      robot.backward(SPEED);
-      delay(50);
-    }
-  }
-
-  if (center < THRESHOLD_CENTER)//White
-  {
-    robot.stop();
-    delay(100);
-    centerWhite();
-    left = analogRead(LIGHT_SENSOR_LEFT);
-    center = analogRead(LIGHT_SENSOR_CENTER);
-    right = analogRead(LIGHT_SENSOR_RIGHT);
-  }
-  
-  else
-    Serial.print(", WHITE DETECTED");
-
-/*
-    Robots Right sensor reading and correction
-*/
-
-
-    left = analogRead(LIGHT_SENSOR_LEFT);
-    center = analogRead(LIGHT_SENSOR_CENTER);
-    right = analogRead(LIGHT_SENSOR_RIGHT);
     
- // Serial.print(" Right: ");
- // Serial.print(right);
- 
-  if(right > THRESHOLD_RIGHT)//Black
-  {
-    Serial.println(", BLACK DETECTED");
-    robot.stop();
-    
-    while(right > THRESHOLD_RIGHT)
+    while((left < THRESHOLD_LEFT)&& (center < THRESHOLD_CENTER) && (right < THRESHOLD_RIGHT))
     {
-      robot.rotateCW(TURN_SPEED);
-      left = analogRead(LIGHT_SENSOR_LEFT);
-      center = analogRead(LIGHT_SENSOR_CENTER);
-      right = analogRead(LIGHT_SENSOR_RIGHT);
       robot.forward(SPEED);
-      delay(10);
+      left = analogRead(LIGHT_SENSOR_LEFT);
+      center = analogRead(LIGHT_SENSOR_CENTER);
+      right = analogRead(LIGHT_SENSOR_RIGHT);
     }
     robot.stop();
-  }
-
-  
-  else
-    Serial.println(", WHITE DETECTED");
-
-  //delay(2000);
+    delay(1000);
+    
+    if((left > THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right > THRESHOLD_RIGHT))//ALL THREE ON LINE
+    {
+      robot.backward(SPEED);
+      delay(500);
+      robot.rotateCW(TURN_SPEED);
+      delay(1000);
+    }
+    
+    if((left > THRESHOLD_LEFT)&& (center < THRESHOLD_CENTER) && (right < THRESHOLD_RIGHT))//JUST LEFT ON THE LINE
+    {
+      robot.backward(SPEED);
+      delay(200);
+      robot.rotateCCW(TURN_SPEED);
+    }
+    
+    if((left > THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right < THRESHOLD_RIGHT))//LEFT AND CENTER
+    {
+      robot.backward(SPEED);
+      delay(100);
+      robot.rotateCW(TURN_SPEED);
+    }
+    if((left < THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right > THRESHOLD_RIGHT))//RIGHT AND CENTER
+    {
+      robot.backward(SPEED);
+      delay(200);
+      robot.rotateCW(TURN_SPEED);
+    }
+    
 }//End of loop
