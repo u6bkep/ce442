@@ -288,4 +288,33 @@ Wire Wire Line
 	4800 3150 4800 2200
 Wire Wire Line
 	4800 2200 4700 2200
+$Comp
+L custom:kettering_light_sensor U?
+U 1 1 5E468391
+P 2100 3000
+F 0 "U?" H 2167 2035 50  0000 C CNN
+F 1 "kettering_light_sensor" H 2167 2126 50  0000 C CNN
+F 2 "" H 2100 3000 50  0001 C CNN
+F 3 "" H 2100 3000 50  0001 C CNN
+	1    2100 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3650 3900 3400 3900
+Wire Wire Line
+	3400 3900 3400 2550
+Wire Wire Line
+	3400 2550 2200 2550
+Wire Wire Line
+	3700 3850 3450 3850
+Wire Wire Line
+	3450 2400 2200 2400
+Wire Wire Line
+	3450 2400 3450 3850
+Wire Wire Line
+	2200 2250 3500 2250
+Wire Wire Line
+	3500 2250 3500 3800
+Wire Wire Line
+	3500 3800 3650 3800
 $EndSCHEMATC
