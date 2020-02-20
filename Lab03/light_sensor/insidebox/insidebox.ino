@@ -55,9 +55,9 @@ Servo servo;
 #define LIGHT_SENSOR_CENTER A9
 #define LIGHT_SENSOR_RIGHT A8
 
-float THRESHOLD_LEFT;
-float THRESHOLD_CENTER;
-float THRESHOLD_RIGHT;
+float THRESHOLD_LEFT = 0;
+float THRESHOLD_CENTER = 0;
+float THRESHOLD_RIGHT = 0;
 int x = 1000;
 int i = 0;
 
@@ -285,8 +285,8 @@ void threeBlack()
       center = analogRead(LIGHT_SENSOR_CENTER);
       right = analogRead(LIGHT_SENSOR_RIGHT);
     }
-    robot.stop();
-    delay(1000);
+    //robot.stop();
+    //delay(1000);
     
     if((left > THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right > THRESHOLD_RIGHT))//ALL THREE ON LINE
     {
@@ -296,23 +296,23 @@ void threeBlack()
       delay(1000);
     }
     
-    if((left > THRESHOLD_LEFT)&& (center < THRESHOLD_CENTER) && (right < THRESHOLD_RIGHT))//JUST LEFT ON THE LINE
+    else if((left > THRESHOLD_LEFT)&& (center < THRESHOLD_CENTER) && (right < THRESHOLD_RIGHT))//JUST LEFT ON THE LINE
     {
       robot.backward(SPEED);
-      delay(200);
+      delay(400);
       robot.rotateCCW(TURN_SPEED);
     }
     
-    if((left > THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right < THRESHOLD_RIGHT))//LEFT AND CENTER
+    else if((left > THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right < THRESHOLD_RIGHT))//LEFT AND CENTER
     {
       robot.backward(SPEED);
-      delay(100);
+      delay(300);
       robot.rotateCW(TURN_SPEED);
     }
-    if((left < THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right > THRESHOLD_RIGHT))//RIGHT AND CENTER
+    else if((left < THRESHOLD_LEFT)&& (center > THRESHOLD_CENTER) && (right > THRESHOLD_RIGHT))//RIGHT AND CENTER
     {
       robot.backward(SPEED);
-      delay(200);
+      delay(300);
       robot.rotateCW(TURN_SPEED);
     }
     
