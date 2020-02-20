@@ -23,8 +23,8 @@ void Robot::forward(int speed)
 void Robot::backward(int speed)
 {
   motor_FL.backward(speed);
-  motor_FR.backward(speed);
-  motor_RR.backward(speed);
+  motor_FR.backward(speed*0.8);
+  motor_RR.backward(speed*0.8);
   motor_RL.backward(speed);
 }
 

@@ -26,14 +26,15 @@ int distance = 0;
 
 int SPEED = 80;
 int TURN_SPEED = 60;
-int kVar = 0;
+int kVar = 15;
+int error = 0;
 
 #define frontRightdirpin1  22
 #define frontRightdirpin2  24
 #define frontRightspdpin 9
 
 #define frontLeftdirpin1  26
-#define frontLeftdirpin2  28
+#define frontLeftdirpin2  2
 #define frontLeftspdpin  10
 
 #define rearRightdirpin1  5
@@ -163,25 +164,30 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
  
  void loop() { 
+  robot.forward(SPEED);
 
-   distance = sonarDistance();
-   robot.forward(SPEED);
-   while (distance == 25)
-   {
-     robot.stop();
-     distance = sonarDistance();
-   }//While it is at good distance
-   while (distance < 25)
-   {
-     kVar = 25-distance;
-     robot.backward(SPEED + kVar);
-     distance = sonarDistance();
-   }//While it is to close
-   while(distance > 25)
-   {
-     kVar = 25 - distance;
-     robot.forward(SPEED + kVar);
-     distance = sonarDistance();
-   }//While it is to far
-   
+  distance = sonarDistance();
+  error = 25-distance;
+  SPEED = error*kVar;
+  while(distance > 25)
+  {
+    robot.forward(SPEED);
+    distance = sonarDistance();
+    error = 25-distance;
+    SPEED = error*kVar;
+  }//To far
+  while(distance < 25)
+  {
+    robot.backward(SPEED);
+    distance = sonarDistance();
+    error = 25-distance;
+    SPEED = error*kVar;
+  }//To close
+  while(distance == 25)
+  {
+    robot.stop();
+    distance = sonarDistance();
+    error = 25-distance;
+    SPEED = error*kVar;
+  }
  }
