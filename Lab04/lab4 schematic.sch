@@ -1,0 +1,166 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Raspberry_Pi_2_3 J?
+U 1 1 5E4F1BE1
+P 2500 3350
+F 0 "J?" H 2500 4831 50  0000 C CNN
+F 1 "Raspberry_Pi_2_3" H 2500 4740 50  0000 C CNN
+F 2 "" H 2500 3350 50  0001 C CNN
+F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 2500 3350 50  0001 C CNN
+	1    2500 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED Green
+U 1 1 5E4F3086
+P 4050 3850
+F 0 "Green" H 4043 3595 50  0000 C CNN
+F 1 "LED" H 4043 3686 50  0000 C CNN
+F 2 "" H 4050 3850 50  0001 C CNN
+F 3 "~" H 4050 3850 50  0001 C CNN
+	1    4050 3850
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED Yellow
+U 1 1 5E4F61CD
+P 4350 4050
+F 0 "Yellow" H 4300 3800 50  0000 C CNN
+F 1 "LED" H 4343 3886 50  0000 C CNN
+F 2 "" H 4350 4050 50  0001 C CNN
+F 3 "~" H 4350 4050 50  0001 C CNN
+	1    4350 4050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3300 3850 3550 3850
+Wire Wire Line
+	4200 3850 4250 3850
+Wire Wire Line
+	4250 3850 4250 3750
+Wire Wire Line
+	4250 3750 4550 3750
+Wire Wire Line
+	4950 4750 2800 4750
+Wire Wire Line
+	2800 4750 2800 4650
+Wire Wire Line
+	4500 4050 4550 4050
+Wire Wire Line
+	4550 4050 4550 3750
+Connection ~ 4550 3750
+Wire Wire Line
+	4550 3750 4950 3750
+Wire Wire Line
+	4950 3750 4950 4750
+$Comp
+L Device:LED RED
+U 1 1 5E4FA774
+P 4400 3450
+F 0 "RED" H 4393 3195 50  0000 C CNN
+F 1 "LED" H 4393 3286 50  0000 C CNN
+F 2 "" H 4400 3450 50  0001 C CNN
+F 3 "~" H 4400 3450 50  0001 C CNN
+	1    4400 3450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1700 2550 1500 2550
+Wire Wire Line
+	1500 2550 1500 1450
+Wire Wire Line
+	1500 1450 4250 1450
+Wire Wire Line
+	4550 3450 4550 3750
+Wire Wire Line
+	3300 4150 3550 4150
+Wire Wire Line
+	3950 4150 3950 4050
+Wire Wire Line
+	3950 4050 4200 4050
+$Comp
+L Switch:SW_Push SW?
+U 1 1 5E4FE53B
+P 1300 2750
+F 0 "SW?" H 1300 3035 50  0000 C CNN
+F 1 "SW_Push" H 1300 2944 50  0000 C CNN
+F 2 "" H 1300 2950 50  0001 C CNN
+F 3 "~" H 1300 2950 50  0001 C CNN
+	1    1300 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 2750 1700 2750
+Wire Wire Line
+	2300 2050 1100 2050
+Wire Wire Line
+	1100 2050 1100 2150
+$Comp
+L Device:R R?
+U 1 1 5E500923
+P 4250 2900
+F 0 "R?" H 4180 2854 50  0000 R CNN
+F 1 "R" H 4180 2945 50  0000 R CNN
+F 2 "" V 4180 2900 50  0001 C CNN
+F 3 "~" H 4250 2900 50  0001 C CNN
+	1    4250 2900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4250 1450 4250 2750
+Wire Wire Line
+	4250 3050 4250 3450
+$Comp
+L Device:R R?
+U 1 1 5E50616A
+P 3700 3850
+F 0 "R?" H 3630 3804 50  0000 R CNN
+F 1 "R" H 3630 3895 50  0000 R CNN
+F 2 "" V 3630 3850 50  0001 C CNN
+F 3 "~" H 3700 3850 50  0001 C CNN
+	1    3700 3850
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5E50DA25
+P 3700 4150
+F 0 "R?" H 3630 4104 50  0000 R CNN
+F 1 "R" H 3630 4195 50  0000 R CNN
+F 2 "" V 3630 4150 50  0001 C CNN
+F 3 "~" H 3700 4150 50  0001 C CNN
+	1    3700 4150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3850 3850 3900 3850
+Wire Wire Line
+	3850 4150 3950 4150
+$Comp
+L Device:R R?
+U 1 1 5E5129B0
+P 1100 2300
+F 0 "R?" H 1030 2254 50  0000 R CNN
+F 1 "R" H 1030 2345 50  0000 R CNN
+F 2 "" V 1030 2300 50  0001 C CNN
+F 3 "~" H 1100 2300 50  0001 C CNN
+	1    1100 2300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1100 2450 1100 2750
+$EndSCHEMATC
