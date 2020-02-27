@@ -134,19 +134,25 @@ struct Cord getSerialString()
 
 Cord distance;
 int state = 0;
+
+#define R_LOW 40
+#define R_HIGH 50
+
 while(true)
 {
+  
   distance = getSerialString();
-  if(distance.r == 0)
+  
+  if((distance.r > R_LOW) && (distance.r < R_HIGH))
     state = 0;
-  else if(distance.r >= 50)
+  else if(distance.r >= R_HIGH)
     state = 1;
-  else if(distance.r < 50)
+  else if(distance.r < R_LOW)
     state = 2;
 
-  if(distance.x >250)
+  if((state != 0) && distance.x >250)
     state = 3;
-  else if(distance.x < 100)
+  else if((state != 0) && distance.x < 100)
     state = 4;
 
   switch(state)
