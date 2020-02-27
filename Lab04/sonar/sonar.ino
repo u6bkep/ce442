@@ -26,7 +26,7 @@ int distance = 0;
 
 int SPEED = 80;
 int TURN_SPEED = 60;
-int kVar = 15;
+int kVar = 17;
 int error = 0;
 
 #define frontRightdirpin1  22
@@ -48,32 +48,6 @@ int error = 0;
 Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpin1, frontRightdirpin2, frontRightspdpin,
             rearLeftdirpin1, rearLeftdirpin2, rearLeftspdpin, rearRightdirpin1, rearRightdirpin2, rearRightspdpin);
 
- void EncoderRightISR()
- {
-  
-    if(digitalRead(rightB) == digitalRead(rightA))
-    {
-      encoderRightCounter --;
-    }
-    else
-    {
-      encoderRightCounter ++;
-    }
-    
- }
-
- void EncoderLeftISR()
- {
-   if(digitalRead(leftB) == digitalRead(leftA))
-    {
-      encoderLeftCounter ++;
-    }
-    else
-    {
-      encoderLeftCounter --;
-    }
-    
- }
 
  int sonarDistance()
 {
@@ -111,83 +85,21 @@ Robot robot(frontLeftdirpin1, frontLeftdirpin2, frontLeftspdpin, frontRightdirpi
 
  } 
 
- int findDirection(){
-  flag = random(0,2);
-
-  if(flag == 1)
-  {
-    servo.write(90+45);//Left
-    delay(1000);
-    if(sonarDistance() < 24)
-    {
-      servo.write(90-45);//Right
-      delay(1000);
-      if(sonarDistance() < 24)
-      {
-        servo.write(90);
-        delay(1000);
-        return 2;
-      }
-    }
-    else
-    {
-      servo.write(90);
-      delay(1000);
-      return 0;//Left
-    }
-  }
-  else
-  {
-    servo.write(90-45);//Right
-    delay(1000);
-    if(sonarDistance() < 24)
-    {
-      servo.write(90+45);//Left
-      delay(1000);
-      if(sonarDistance() < 24)
-      {
-        servo.write(90);
-        delay(1000);
-        return 2;
-      }
-    }
-    else
-    {
-      servo.write(90);
-      delay(1000);
-      return 1;//Right
-    }
-  }
-  
- }//End of find direction
 
 
  
  void loop() { 
-  robot.forward(SPEED);
-
   distance = sonarDistance();
   error = 25-distance;
   SPEED = error*kVar;
-  while(distance > 25)
+
+  if(SPEED < 0)
   {
+    SPEED = -1* SPEED;
     robot.forward(SPEED);
-    distance = sonarDistance();
-    error = 25-distance;
-    SPEED = error*kVar;
-  }//To far
-  while(distance < 25)
+  }//iF THE VALUE IS NEGATIVE BACKUP
+  else
   {
     robot.backward(SPEED);
-    distance = sonarDistance();
-    error = 25-distance;
-    SPEED = error*kVar;
-  }//To close
-  while(distance == 25)
-  {
-    robot.stop();
-    distance = sonarDistance();
-    error = 25-distance;
-    SPEED = error*kVar;
   }
  }
