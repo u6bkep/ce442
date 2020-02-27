@@ -143,7 +143,7 @@ while(true)
   
   distance = getSerialString();
   
-  if((distance.r > R_LOW) && (distance.r < R_HIGH))
+  if((distance.r == 0) || (distance.r > R_LOW) && (distance.r < R_HIGH))
     state = 0;
   else if(distance.r >= R_HIGH)
     state = 1;
@@ -162,10 +162,12 @@ while(true)
     
     break;
     case 1:
-      robot.backward(50);
+      SPEED = (45 - distance.r)*kVar;
+      robot.backward(SPEED);
       break;
     case 2:
-      robot.forward(50);
+      SPEED = (45 - distance.r)*kVar;
+      robot.forward(SPEED);
       break;
     case 3:
       robot.rotateCW(25);
